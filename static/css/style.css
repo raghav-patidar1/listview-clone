@@ -1,0 +1,55 @@
+:root{
+    /* colors */
+    --black: #000;
+    --black-md: #212121;
+    --grey: #ddd;
+    --red: rgb(255, 6, 6);
+}
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: sans-serif;
+}
+.main{
+    width: 900px;
+    margin: 50px auto;
+}
+h1{
+    font-size: 3.2rem;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+table{
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+th{
+    background-color: var(--black-md);
+    color: var(--grey);
+    font-size: 1.6rem;
+}
+td{
+    font-size: 1.4rem;
+}
+th, td{
+    padding: 8px 12px;
+    border: 1px solid var(--grey);
+}
+p{
+    margin-top: 15px;
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--red);
+}

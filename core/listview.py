@@ -5,8 +5,10 @@ class BaseListView(type):
     """
     Metaclass for ListView.
 
-    - Automatically injects a default queryset if the `model` attribute is present.
-    - Enforces the presence of the `model` attribute in subclasses (except for the base ListView).
+    - Automatically injects a default queryset if the `model` attribute is 
+    present.
+    - Enforces the presence of the `model` attribute in subclasses (except for 
+    the base ListView).
     """
     
     def __new__(cls, name, bases, attrs):
@@ -14,7 +16,7 @@ class BaseListView(type):
             return super().__new__(cls, name, bases, attrs)
         
         if "model" not in attrs:
-            raise NotImplementedError("model field is required.")
+            raise NotImplementedError(f"The 'model' attribute must be defined in {name}.")
         
         # add default queryset
         model = attrs.get('model')
@@ -54,9 +56,9 @@ class ListView(metaclass=BaseListView):
         Returns the template name to use.
         If not specified, defaults to `<model>_list.html`.
         """
-        template_format_str = f"{self.model.__name__.lower()}_list.html"
+        default_template = f"{self.model.__name__.lower()}_list.html"
         return self.template_name if self.template_name else \
-            template_format_str
+            default_template
     
     @property
     def get_context_object_name(self):
@@ -64,9 +66,9 @@ class ListView(metaclass=BaseListView):
         Returns the context variable name for the queryset.
         If not specified, defaults to `<model>_objects`.
         """
-        context_object_str = f"{self.model.__name__.lower()}_objects"
+        default_context_object = f"{self.model.__name__.lower()}_objects"
         return self.context_object_name if self.context_object_name else \
-            context_object_str
+            default_context_object
 
     def get_response(self, request):
         """
