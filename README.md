@@ -16,7 +16,7 @@ Built a simplified ListView-like class to understand Django CBV internals, revis
 
 ## How to Use
 
-### Create a view
+### 1. Create a view
 ```python
 from listview import ListView
 from .models import Product
@@ -26,15 +26,14 @@ class ProductListView(ListView):
 
 ```
 
-### Define URL pattern
+### 2. Define URL pattern
 ```python
 urlpatterns = [
     path('products/', views.ProductListView().get_response),
 ] 
 ```
 
-### Run the server
-```
-python
+### 3. Run the server
+```python
 py manage.py runserver
 ```
